@@ -113,18 +113,84 @@ class HBNBCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD """
         pass
 
-    def do_create(self, args):
-        """ Create an object of any class"""
-        if not args:
-            print("** class name missing **")
-            return
-        elif args not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-            return
-        new_instance = HBNBCommand.classes[args]()
-        storage.save()
-        print(new_instance.id)
-        storage.save()
+#    def do_create(self, args):
+#        """ Create an object of any class"""
+#        if not args:
+#           print("** class name missing **")
+#            return
+#        elif args not in HBNBCommand.classes:
+#            print("** class doesn't exist **")
+#            return
+#        new_instance = HBNBCommand.classes[args]()
+#        storage.save()
+#        print(new_instance.id)
+#        storage.save()
+
+
+    def do_create(self, arg):
+    """ Create an object of any class"""
+        args = arg.split()
+        if len(args) < 1:
+            
+            print("*** Class name missing ***")
+        else:
+            try:
+                eval(args[0])
+            except:
+                print("*** Class doesn't exist ***")
+                return args
+            
+            validClass = eval(args[0])()
+            if len(args) == 1 and validClass in HBNBCommand.classes:
+                print(validClass.id)
+                validClass.save()
+                
+            if len(args) > 1:
+                """
+                newDict = {} # new dictionry to store
+                key value pair like **newDict
+                """
+                for paramItem in range(1, len(args)):
+                    nameVal = args[paramItem].split("=")
+                    """
+                    #split parmaeter e.g 
+                    name="Vince" to nameVal = ["name", "Vince"]
+                    """
+                    if len(nameVal) != 2:
+                        message = "*** {} is not a key value pair ***"
+                        print(message.format(args[paramItem]))
+                        continue
+                    else:
+                        
+                        if nameVal[1].startswith('"') and nameVal[1].endswith('"'):
+                            """
+                            # If the value starts and ends with '"'
+                            """
+                            nameVal[1] = nameVal[1][1:-1]
+                            # pick the words and convert to string with str()
+                            nameVal[1] = nameVal[1].replace('_', ' ')
+                            # check '_' exists and replace with ' '
+                            
+                            nameVal[1] = str(nameVal[1])
+                            # Place in new dictionary
+                            
+                        elif '.' in nameVal[1]:
+                            # if '.' exists in value convert it to float and assing in dict
+                            try:
+                                nameVal[1] = float(nameVal[1])
+                            except:
+                                continue 
+                        else:
+                            try:
+                                nameVal[1] = int(nameVal[1])
+                            except:
+                                continue 
+                        setattr(validClass, nameVal[0], nameVal[1])
+                            #eval(validClass)(**newDict)
+                print(validClass.id)
+                validClass.save()
+            else:
+                return
 
     def help_create(self):
         """ Help information for the create method """
