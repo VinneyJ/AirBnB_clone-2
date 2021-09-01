@@ -2,12 +2,13 @@
 """
 compress the webstatic
 """
-
-from fabric.api import *
+from fabric.api import local
 import time
 
 
 def do_pack():
+    ''' creates a .tgz archive '''
+    
     timestmp = time.strftime("%Y%m%d%H%M%S")
     try:
         local('mkdir -p versions')
