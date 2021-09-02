@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+    Generate a .tgz archive from the contents of the web_static folder
+    Deploy it to the web servers
+"""
 from fabric.api import *
 import time
 import os.path
@@ -47,6 +51,9 @@ def do_deploy(archive_path):
 
 
 def deploy():
+    """
+        Calls do_pack() function then do_deploy
+    """
     try:
         archive_path = do_pack()
         value = do_deploy(archive_path)
