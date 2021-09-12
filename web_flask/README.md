@@ -74,3 +74,32 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/c
 <h1>Not Found</h1>
 <p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p> 
 ```
+## 
+
+Write a script that starts a Flask web application:
+
+   - Your web application must be listening on 0.0.0.0, port 5000
+   - Routes:
+       - /: Hello HBNB!display
+       - /hbnb: HBNBdisplay
+       - /c/<text>:  followed by the value of the text variable (replace underscore _ symbols with a space )C display
+       - /python/(<text>): , followed by the value of the text variable (replace underscore _ symbols with a space )Python display
+       - The default value of text "is cool" 
+   - You must use the option strict_slashes=False in your route definition
+
+```
+guillaume@ubuntu:~/AirBnB_v2$ python3 -m web_flask.3-hbnb_route
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+
+```
+guillaume@ubuntu:~$ curl -Ls 0.0.0.0:5000/python/is_magic ; echo "" | cat -e
+Python is magic$
+guillaume@ubuntu:~$ curl -Ls 0.0.0.0:5000/python ; echo "" | cat -e
+Python is cool$
+guillaume@ubuntu:~$ curl -Ls 0.0.0.0:5000/python/ ; echo "" | cat -e
+Python is cool$
+guillaume@ubuntu:~$ 
+```
