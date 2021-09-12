@@ -23,7 +23,10 @@ def hello_hbnb():
 @app.route("/c/<text>", strict_slashes=False)
 def c_is(text):
     ''' c is what '''
-    return "c {}".format(text.replace('_', ' '))
+    if '_' in text:
+        return "c {}".format(text.replace('_', ' '))
+    return "c {}".format(text)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
