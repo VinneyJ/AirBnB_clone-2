@@ -40,8 +40,8 @@ def python_is(text="is fun"):
 
 @app.route("/number/<int:n>", strict_slashes=False)
 def is_number(n):
-    #if isinstance(n, int):
-     return "{} is a number".format(n)
+    ''' if isinstance(n, int): '''
+    return "{} is a number".format(n)
 
 
 if __name__ == "__main__":
