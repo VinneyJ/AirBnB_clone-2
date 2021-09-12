@@ -24,8 +24,8 @@ def hello_hbnb():
 def c_is(text):
     ''' c is what '''
     if '_' in text:
-        return "c {}".format(text.replace('_', ' '))
-    return "c {}".format(text)
+        return "C {}".format(text.replace('_', ' '))
+    return "C {}".format(text)
 
 
 if __name__ == "__main__":
