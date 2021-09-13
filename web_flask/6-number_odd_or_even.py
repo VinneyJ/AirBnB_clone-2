@@ -52,7 +52,7 @@ def show_html(n):
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def odd_even(n):
     num = ""
-    if n%2 == 0:
+    if n % 2 == 0:
         num = "{} is even".format(n)
         return (render_template("6-number_odd_or_even.html", n=num))
     else:
