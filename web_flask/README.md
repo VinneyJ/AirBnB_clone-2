@@ -143,7 +143,7 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/number/python
 guillaume@ubuntu:~$
 ```
 
-## 
+## 5. Number template
 
 Write a script that starts a Flask web application:
 
@@ -189,4 +189,58 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/number_template/python
 <h1>Not Found</h1>
 <p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
 guillaume@ubuntu:~$
+```
+
+## 6. Odd or even?
+
+Write a script that starts a Flask web application:
+
+   - Your web application must be listening on 0.0.0.0, port 5000
+   - Routes:
+       - /: Hello HBNB!display
+       - /hbnb: HBNBdisplay
+       - /c/<text>:  followed by the value of the text variable (replace underscore _ symbols with a space )C display
+       - /python/(<text>): , followed by the value of the text variable (replace underscore _ symbols with a space )Python display
+           - The default value of text is "is cool"
+
+       - /number/<n>: display "n is a number" if n is an integer
+       - /number_template/<n>: display a HTML page only if n is an integer:
+           - H1 tag: "Number: n" inside the tag BODY
+       - /number_odd_or_even/<n> : display a HTML page only if n is an integer:		                - H1 tag: "Number: n is even|odd" inside the tag   
+   - You must use the option strict_slashes=False in your route definition
+
+```
+guillaume@ubuntu:~/AirBnB_v2$ python3 -m web_flask.5-number-template
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+
+```
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/number_odd_or_even/89 ; echo ""
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>Number: 89 is odd</H1>
+    </BODY>
+</HTML>
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/number_odd_or_even/32 ; echo ""
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>Number: 32 is even</H1>
+    </BODY>
+</HTML>
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/number_odd_or_even/python 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+guillaume@ubuntu:~$ 
 ```
