@@ -20,10 +20,10 @@ class FileStorage:
         """Returns a dictionary of models currently in storage"""
         if cls is not None:
             if type(cls) == str:
-                obj = classes[cls]
+                cls = classes[cls]
             clsObjects = {}
             for key, value in self.__objects.items():
-                if type(value) == obj:
+                if type(value) == cls:
                     clsObjects[key] = value
             return clsObjects
 
