@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
 
 
     def do_create(self, arg):
-    """ Create an object of any class"""
+        """ Create an object of any class"""
         args = arg.split()
         if len(args) < 1:
             
