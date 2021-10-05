@@ -29,13 +29,10 @@ def c_is(text):
 
 
 @app.route("/python", strict_slashes=False)
-@app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def python_is(text="is fun"):
     ''' Python is what '''
-    if '_' in text:
-        return "Python {}".format(text.replace('_', ' '))
-    return "Python {}".format(text)
+    return "Python {}".format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":
